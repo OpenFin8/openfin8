@@ -101,5 +101,15 @@
       "label": "Bank8 composes the OpenFin8 provider role",
       "url": "https://bank8.dev/"
     }
+  ],
+  "apps": [
+    {
+      "slug": "openfin8-eopenca",
+      "kind": "app",
+      "name": "eOpenCA",
+      "repo": "openfin8-eopenca",
+      "org": "OpenFin8",
+      "summary": "The recipient app (the former eFintech): provider discovery, consent journeys, consented account + transaction data - the fintech side of the two-ledger model."
+    }
   ]
 }

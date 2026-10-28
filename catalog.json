@@ -19,5 +19,26 @@
     "database_env_vars": [
       "OPENFIN8_UK_DATABASE_URL"
     ]
+  },
+  {
+    "service_type": "openfin8:br",
+    "binary": "openfin8-br",
+    "database_env_vars": [
+      "OPENFIN8_BR_DATABASE_URL"
+    ]
+  },
+  {
+    "service_type": "openfin8:eu",
+    "binary": "openfin8-eu",
+    "database_env_vars": [
+      "OPENFIN8_EU_DATABASE_URL"
+    ]
+  },
+  {
+    "service_type": "openfin8:au",
+    "binary": "openfin8-au",
+    "database_env_vars": [
+      "OPENFIN8_AU_DATABASE_URL"
+    ]
   }
 ]
