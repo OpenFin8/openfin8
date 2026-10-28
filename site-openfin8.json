@@ -1,0 +1,105 @@
+{
+  "vertical": "openfin8",
+  "name": "OpenFin8",
+  "org": "OpenFin8",
+  "domain": "openfin8.dev",
+  "tagline": "Consent-First Open Finance: Every Jurisdiction, One Platform.",
+  "accent": "#0E7C66",
+  "pillarsLead": "OpenFin8 inherits the Sentin8 security model by construction - the consent ledger, the recipient registry, and every jurisdiction adapter run behind the platform's authorization pipeline, tenant isolation, and post-quantum TLS.",
+  "pillars": [
+    {
+      "title": "No consent, no data",
+      "summary": "Every provider route passes the consent middleware (valid, unexpired, scope-covered) on top of row-level security; revocation stops serving on the very next call - structurally, no bypass exists."
+    },
+    {
+      "title": "Two ledgers, one truth per side",
+      "summary": "The provider's grant ledger and the recipient's consent registry live in separate tenants; no cross-tenant SQL ever. Either institution may run any technology - the only contract is standards-based OAuth."
+    },
+    {
+      "title": "Data minimization by construction",
+      "summary": "Responses are projected to the granted CSDF clusters before serialization - narrowed by scope, product category, and requested fields. Unknown scopes grant nothing."
+    },
+    {
+      "title": "One kernel, zero forks",
+      "summary": "The entire implementation lives in openfin8-core, shared byte-for-byte. Each country adapter contributes its Profile and registration data - adding a market is configuration, not a port."
+    },
+    {
+      "title": "Licensed specs, never published",
+      "summary": "The FDX API specification is licensed and never committed; each adapter's published spec carries OpenFin8-owned routes only, enforced by a CI drift guard. Customers supply their licensed copy."
+    }
+  ],
+  "units": [
+    {
+      "slug": "openfin8-ca",
+      "kind": "service",
+      "name": "OpenFin8:CA",
+      "repo": "openfin8-ca",
+      "org": "OpenFin8",
+      "summary": "Canadian open banking (FDX v6.x, consumer-driven banking): the provider and recipient surfaces over the shared kernel - consent-checked data sharing, money-movement initiation, notifications, certification metrics.",
+      "scopes": [
+        "openfin8:ca:consents:read",
+        "openfin8:ca:providers:read"
+      ]
+    },
+    {
+      "slug": "openfin8-us",
+      "kind": "service",
+      "name": "OpenFin8:US",
+      "repo": "openfin8-us",
+      "org": "OpenFin8",
+      "summary": "US open banking (FDX v6.x): the identical surface over the same kernel with US identity - independent version cadence, independent enablement.",
+      "scopes": [
+        "openfin8:us:consents:read",
+        "openfin8:us:providers:read"
+      ]
+    },
+    {
+      "slug": "openfin8-uk",
+      "kind": "service",
+      "name": "OpenFin8:UK",
+      "repo": "openfin8-uk",
+      "org": "OpenFin8",
+      "summary": "UK open banking (OBL Read/Write API v3.1.x): the ASPSP adapter - FAPI 1 Advanced ceremony, intent-based consents, JWS signing, OB Directory trust. In design (OBARCH-5).",
+      "scopes": [
+        "openfin8:uk:consents:read"
+      ]
+    }
+  ],
+  "sdks": [
+    {
+      "slug": "core",
+      "kind": "sdk",
+      "name": "openfin8-core",
+      "repo": "openfin8-core",
+      "org": "OpenFin8",
+      "summary": "The open-finance kernel: the consent ledger, recipient registry, CSDF minimization engine, notification worker, and the runtime Profile every jurisdiction identity derives from - embedded by every adapter.",
+      "href": "/docs/sdk/"
+    }
+  ],
+  "showcaseTitle": "Composed on the Sentin8 platform",
+  "showcaseLead": "OpenFin8 contains no platform infrastructure of its own - identity, events, storage, workflows, and scheduling come from the platform services.",
+  "showcase": [
+    {
+      "slug": "sentin8",
+      "name": "Sentin8 - the platform",
+      "chip": "sentin8.dev",
+      "accent": "#D4AF37",
+      "summary": "17 services: identity, events, storage, workflows, scheduling - everything OpenFin8 doesn't rebuild.",
+      "href": "https://sentin8.dev/"
+    },
+    {
+      "slug": "bank8",
+      "name": "Bank8",
+      "chip": "bank8.dev",
+      "accent": "#1B6CA8",
+      "summary": "The first customer: bank8 composes the OpenFin8:CA provider role for its consent dashboard and recipient flows.",
+      "href": "https://bank8.dev/"
+    }
+  ],
+  "crossrefs": [
+    {
+      "label": "Bank8 composes the OpenFin8 provider role",
+      "url": "https://bank8.dev/"
+    }
+  ]
+}

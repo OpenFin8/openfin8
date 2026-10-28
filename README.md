@@ -1,5 +1,7 @@
 # OpenFin8 - Open Finance Vertical
 
+**Website: [openfin8.dev](https://openfin8.dev/)** - the full documentation lives there.
+
 **Consent-first financial data sharing: open banking and open finance
 for every jurisdiction - US, Canada, UK, with Brazil, EU, and Australia
 designed on the same contract.**
