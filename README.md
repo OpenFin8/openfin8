@@ -2,9 +2,11 @@
 
 **Website: [openfin8.dev](https://openfin8.dev/)** - the full documentation lives there.
 
-**Consent-first financial data sharing: open banking and open finance
-for every jurisdiction - US, Canada, UK, with Brazil, EU, and Australia
-designed on the same contract.**
+**Secure Post-Quantum-Safe Consent-First Open Finance Platform That Heals and Scales Itself.**
+
+Consent-first financial data sharing for every jurisdiction - US,
+Canada, UK, with Brazil, EU, and Australia designed on the same
+contract.
 
 OpenFin8 is the open-finance vertical of the Sentin8 platform: the
 consent authority, recipient registry, and jurisdiction adapters that

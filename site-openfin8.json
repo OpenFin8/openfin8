@@ -3,7 +3,7 @@
   "name": "OpenFin8",
   "org": "OpenFin8",
   "domain": "openfin8.dev",
-  "tagline": "Consent-First Open Finance: Every Jurisdiction, One Platform.",
+  "tagline": "Secure Post-Quantum-Safe Consent-First Open Finance Platform That Heals and Scales Itself.",
   "accent": "#0E7C66",
   "pillarsLead": "OpenFin8 inherits the Sentin8 security model by construction - the consent ledger, the recipient registry, and every jurisdiction adapter run behind the platform's authorization pipeline, tenant isolation, and post-quantum TLS.",
   "pillars": [
