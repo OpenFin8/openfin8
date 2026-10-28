@@ -1,0 +1,23 @@
+[
+  {
+    "service_type": "openfin8:ca",
+    "binary": "openfin8-ca",
+    "database_env_vars": [
+      "OPENFIN8_CA_DATABASE_URL"
+    ]
+  },
+  {
+    "service_type": "openfin8:us",
+    "binary": "openfin8-us",
+    "database_env_vars": [
+      "OPENFIN8_US_DATABASE_URL"
+    ]
+  },
+  {
+    "service_type": "openfin8:uk",
+    "binary": "openfin8-uk",
+    "database_env_vars": [
+      "OPENFIN8_UK_DATABASE_URL"
+    ]
+  }
+]

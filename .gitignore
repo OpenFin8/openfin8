@@ -1,0 +1,7 @@
+# Child repositories — independent GitHub repos placed alongside on disk.
+# The group repo tracks ONLY the group-level docs + build files.
+/openfin8-*/
+/openfin8.github/
+
+# Local environment (never commit secrets/DSNs)
+/.env
