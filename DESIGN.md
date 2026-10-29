@@ -35,6 +35,7 @@ graph TD
         CA["openfin8:ca"]
         US["openfin8:us"]
         UK["openfin8:uk (OBARCH-5)"]
+        EU["openfin8:eu (OBARCH-7)"]
     end
     subgraph bank8["bank8 vertical (first customer)"]
         LEDGER["Bank8:Ledger"]
@@ -48,9 +49,9 @@ graph TD
         STOR["Sentin8:Storage"]
     end
     RECIP["Data recipient (AISP/fintech)"]
-    CORE --- CA & US & UK
+    CORE --- CA & US & UK & EU
     CA & US -->|"public API + bank8:: contracts"| LEDGER & PAY
-    CA & US & UK -->|"ceremony + grant seed"| AUTH
+    CA & US & UK & EU -->|"ceremony + grant seed"| AUTH
     CORE -->|"events: openfin8:{xx}:*"| BUS
     CA -->|"tokens/refs"| SECRETS
     SYS -->|"service:updated (env-init)"| CORE
@@ -63,10 +64,10 @@ graph TD
 | Aspect | Value |
 |---|---|
 | Vertical / org | `openfin8` / [OpenFin8](https://github.com/OpenFin8) |
-| Service types | `openfin8:ca`, `openfin8:us`, `openfin8:uk` (+ future `br/eu/au`) |
+| Service types | `openfin8:ca`, `openfin8:us`, `openfin8:uk`, `openfin8:eu` (+ designed `br/au`) |
 | Database (DBX §6.6) | `openfin8` (database-per-vertical) |
-| Schemas (schema-per-service) | `openfin8_ca`, `openfin8_us`, `openfin8_uk` |
-| Env prefixes | `OPENFIN8_CA_*`, `OPENFIN8_US_*`, `OPENFIN8_UK_*` |
+| Schemas (schema-per-service) | `openfin8_ca`, `openfin8_us`, `openfin8_uk`, `openfin8_eu` |
+| Env prefixes | `OPENFIN8_CA_*`, `OPENFIN8_US_*`, `OPENFIN8_UK_*`, `OPENFIN8_EU_*` |
 | Event families | `openfin8:ca:*` etc. (grammar `openfin8:{xx}:{resource}:{operation}`) |
 | OAuth scopes | `openfin8:{xx}:consents:read`, `openfin8:{xx}:accountbasic:read`, ... |
 | Stream families / workloads | `openfin8-ca` etc. |
@@ -120,14 +121,29 @@ bank8 reaches OpenFin8 via BFF service calls only.
 
 ## 7. Roadmap
 
-- **OBARCH-5** (`openfin8:uk`): FAPI 1 Advanced ceremony (client-
-  credentials intent staging + hybrid flow + request objects),
-  intent-based consents over core's `awaiting_authorization` state,
-  `{Data, Links, Meta}` envelope codec, detached JWS signing, OB
-  Directory trust, VRP, event-notification API. Auth gains the FAPI
-  profile flag alongside.
-- **BR / EU / AU adapters**: designed (research set); each lands as a
-  thin profile + wire family per the same contract.
+- **OBARCH-5** (`openfin8:uk`) - LANDED (2026-10-29): the OB R/W
+  surface over the kernel - the intent-based consent model
+  (client-credentials staging + the OB four-state machine + the 24h
+  staged-intent sweep), the FAPI 1 Advanced ceremony + detached JWS
+  signing (fail-closed; the OB Directory JOSE claims), the
+  `{Data, Links, Meta}` envelope codec + the OBL error rules, the
+  aisp/pisp/cbpii resource surfaces, domestic payments + VRP (the
+  control parameters enforced at initiation), and the OBL
+  event-notification API. Remaining: the browser FAPI PSU page (the
+  recipient-app story) + the resolved signing-key material and the
+  real Directory JWKS (the production trust halves). Auth's FAPI
+  profile flag rides the platform program.
+- **OBARCH-7** (`openfin8:eu`) - LANDED (2026-10-28): the XS2A
+  surface - the consent + authorisation model (the four-state
+  machine + the pre-step), the three SCA approach ceremonies over
+  Flow, the eIDAS secret-reference trust path + bank-by-bank DCR,
+  PIS + signing baskets through Payments, the AIS/PIIS reads behind
+  the chokepoint, the honest extended services, the e2e journey, the
+  published spec + the site unit. Remaining: the browser SCA page +
+  the resolved-QSEALC-material verification.
+- **BR / AU adapters**: designed (research set); each lands as a thin
+  profile + wire family per the same contract (the EU and UK programs'
+  shape).
 
 ---
 

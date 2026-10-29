@@ -63,6 +63,17 @@
       "scopes": [
         "openfin8:uk:consents:read"
       ]
+    },
+    {
+      "slug": "openfin8-eu",
+      "kind": "service",
+      "name": "OpenFin8:EU",
+      "repo": "openfin8-eu",
+      "org": "OpenFin8",
+      "summary": "European open finance (Berlin Group openFinance V2): the XS2A adapter - AIS/PIS/PIIS, the three SCA approaches (redirect mandatory; decoupled + embedded conditional), eIDAS QWAC/QSEALC certificates, bank-by-bank DCR (no central directory), signing baskets. The consent + authorisation model over the kernel (OBARCH-7).",
+      "scopes": [
+        "openfin8:eu:consents:read"
+      ]
     }
   ],
   "sdks": [

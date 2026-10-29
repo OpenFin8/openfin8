@@ -39,7 +39,7 @@ graph TD
     subgraph adapters["thin adapters (data only, zero forks)"]
         CA["openfin8-ca<br/>FDX v6.x · Canada"]
         US["openfin8-us<br/>FDX v6.x · US"]
-        UK["openfin8-uk<br/>OBL R/W API (in design - OBARCH-5)"]
+        UK["openfin8-uk<br/>OBL R/W API (serving - OBARCH-5)"]
     end
     subgraph bank["bank8 vertical (first customer)"]
         LEDGER["Bank8:Ledger"]
@@ -74,9 +74,9 @@ institution's instance serves whichever role its environment plays.
 | `openfin8-core` | - | - | kernel library (tagged `openfin8-v*`) |
 | `openfin8:ca` | Canada | FDX v6.x (consumer-driven banking) | serving |
 | `openfin8:us` | United States | FDX v6.x | serving |
-| `openfin8:uk` | United Kingdom | OBL Read/Write API v3.1.x | in design (OBARCH-5) |
+| `openfin8:uk` | United Kingdom | OBL Read/Write API v3.1.x | serving (OBARCH-5): the intent consent model, FAPI/JWS, the envelope codec, aisp/pisp/cbpii, events |
 | `openfin8:br` | Brazil | Open Finance Brasil | designed (BR profile on the kernel) |
-| `openfin8:eu` | European Union | Berlin Group openFinance | designed |
+| `openfin8:eu` | European Union | Berlin Group openFinance | serving (OBARCH-7): the consent + authorisation model, the SCA ceremonies, eIDAS, PIS/baskets, AIS/PIIS, events |
 | `openfin8:au` | Australia | CDR | designed |
 
 ## Specification licensing (the OBARCH-2 policy)
@@ -108,7 +108,7 @@ ebank consent dashboard reaches it through the BFF like any service.
 | [`OpenFin8/openfin8-us`](https://github.com/OpenFin8/openfin8-us) | the US adapter |
 | [`OpenFin8/openfin8-uk`](https://github.com/OpenFin8/openfin8-uk) | the UK adapter |
 | [`OpenFin8/openfin8-br`](https://github.com/OpenFin8/openfin8-br) | the Brazil adapter (designed) |
-| [`OpenFin8/openfin8-eu`](https://github.com/OpenFin8/openfin8-eu) | the EU adapter (designed) |
+| [`OpenFin8/openfin8-eu`](https://github.com/OpenFin8/openfin8-eu) | the EU adapter |
 | [`OpenFin8/openfin8-au`](https://github.com/OpenFin8/openfin8-au) | the Australia adapter (designed) |
 | [`OpenFin8/openfin8-eopenca`](https://github.com/OpenFin8/openfin8-eopenca) | eOpenCA - the recipient app |
 | [`OpenFin8/openfin8-e2e`](https://github.com/OpenFin8/openfin8-e2e) | the recipient-journey e2e suite |

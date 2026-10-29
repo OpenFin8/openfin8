@@ -52,9 +52,9 @@ execution (Sentin8:Flow), scheduling (Sentin8:Cron).
 |---|---|---|---|
 | Canada | FDX v6.x | Consumer-driven banking (2026 framework target) | The bank serves `/fdx/v6/*`; version per environment (`OPENFIN8_CA_VERSION`) |
 | US | FDX v6.x | CFPB-recognized standard-setting body (§1033) | Identical surface, independent version cadence (`OPENFIN8_US_VERSION`) |
-| UK | OBL R/W API | CMA order + PSD2/FCA - mandated | In design (OBARCH-5): ASPSP obligations, FAPI ceremony, intent consents |
+| UK | OBL R/W API | CMA order + PSD2/FCA - mandated | Serving (OBARCH-5): ASPSP obligations, FAPI ceremony, intent consents |
 | Brazil | Open Finance Brasil | Central Bank mandated | Designed: consent-resource + PIX initiation + ICP-Brasil mTLS |
-| EU | Berlin Group openFinance | PSD2 → PSD3/FDA in flight | Designed: SCA approaches, eIDAS certificates |
+| EU | Berlin Group openFinance | PSD2 → PSD3/FDA in flight | Serving (OBARCH-7): SCA approaches, eIDAS certificates |
 | Australia | CDR | ACCC accreditation regime | Designed: CDR Register, sharing arrangements, consent dashboards |
 
 ## 4. Business Events
