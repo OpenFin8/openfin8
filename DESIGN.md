@@ -2,7 +2,7 @@
 
 > The open-finance vertical: architecture, boundaries, and the
 > composition contract. Per-service wire-level design lives in each
-> repository's `DESIGN.md` (OBARCH-1..5); this document is the
+> repository's `DESIGN.md`; this document is the
 > vertical rollup.
 
 ## 1. Scope & Context
@@ -34,8 +34,8 @@ graph TD
         CORE["openfin8-core<br/>(library: ledger, registry, csdf, notify)"]
         CA["openfin8:ca"]
         US["openfin8:us"]
-        UK["openfin8:uk (OBARCH-5)"]
-        EU["openfin8:eu (OBARCH-7)"]
+        UK["openfin8:uk (the OBL R/W wire)"]
+        EU["openfin8:eu (the XS2A wire)"]
     end
     subgraph bank8["bank8 vertical (first customer)"]
         LEDGER["Bank8:Ledger"]
@@ -102,7 +102,7 @@ Two layers, per the platform's model:
    selectors, and the provider-profile seed. Precedence:
    `sys.services.config` → env var → profile default.
 
-## 5. Spec Publication (OBARCH-2)
+## 5. Spec Publication
 
 | Adapter | Policy | Effect |
 |---|---|---|
@@ -111,7 +111,7 @@ Two layers, per the platform's model:
 
 ## 6. Failure Modes & Invariants
 
-Carried from the OBARCH set unchanged: the consent middleware
+Carried from the adapter set unchanged: the consent middleware
 chokepoint; terminal revocation; secret references only;
 same-transaction tenant discipline; no cross-tenant SQL; profile
 isolation (an adapter cannot mount another jurisdiction's routes).
@@ -121,29 +121,26 @@ bank8 reaches OpenFin8 via BFF service calls only.
 
 ## 7. Roadmap
 
-- **OBARCH-5** (`openfin8:uk`) - LANDED (2026-10-29): the OB R/W
-  surface over the kernel - the intent-based consent model
-  (client-credentials staging + the OB four-state machine + the 24h
-  staged-intent sweep), the FAPI 1 Advanced ceremony + detached JWS
-  signing (fail-closed; the OB Directory JOSE claims), the
-  `{Data, Links, Meta}` envelope codec + the OBL error rules, the
-  aisp/pisp/cbpii resource surfaces, domestic payments + VRP (the
-  control parameters enforced at initiation), and the OBL
-  event-notification API. Remaining: the browser FAPI PSU page (the
-  recipient-app story) + the resolved signing-key material and the
-  real Directory JWKS (the production trust halves). Auth's FAPI
-  profile flag rides the platform program.
-- **OBARCH-7** (`openfin8:eu`) - LANDED (2026-10-28): the XS2A
-  surface - the consent + authorisation model (the four-state
-  machine + the pre-step), the three SCA approach ceremonies over
-  Flow, the eIDAS secret-reference trust path + bank-by-bank DCR,
-  PIS + signing baskets through Payments, the AIS/PIIS reads behind
-  the chokepoint, the honest extended services, the e2e journey, the
-  published spec + the site unit. Remaining: the browser SCA page +
-  the resolved-QSEALC-material verification.
-- **BR / AU adapters**: designed (research set); each lands as a thin
-  profile + wire family per the same contract (the EU and UK programs'
-  shape).
+- **`openfin8:uk` - serving**: the OB R/W surface over the kernel - the
+  intent-based consent model (client-credentials staging + the OB
+  four-state machine + the 24h staged-intent expiry sweep), the FAPI 1
+  Advanced ceremony + detached JWS signing (fail-closed; the OB
+  Directory JOSE claims), the `{Data, Links, Meta}` envelope codec +
+  the OBL error rules, the aisp/pisp/cbpii resource surfaces, domestic
+  payments + VRP (the control parameters enforced at initiation), and
+  the OBL event-notification API. Remaining: the browser FAPI PSU page
+  (the recipient-app story) + the resolved signing-key material and
+  the real Directory JWKS (the production trust halves).
+- **`openfin8:eu` - serving**: the XS2A surface - the consent +
+  authorisation model (the four-state machine + the pre-step), the
+  three SCA approach ceremonies over Flow, the eIDAS secret-reference
+  trust path + bank-by-bank DCR, PIS + signing baskets through
+  Payments, the AIS/PIIS reads behind the chokepoint, the honest
+  extended services, the e2e journey, the published spec + the site
+  unit. Remaining: the browser SCA page + the resolved-QSEALC-material
+  verification.
+- **`openfin8:br` / `openfin8:au`**: each lands as a thin profile +
+  wire family per the same contract (the UK and EU shape).
 
 ---
 

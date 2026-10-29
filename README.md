@@ -39,7 +39,7 @@ graph TD
     subgraph adapters["thin adapters (data only, zero forks)"]
         CA["openfin8-ca<br/>FDX v6.x · Canada"]
         US["openfin8-us<br/>FDX v6.x · US"]
-        UK["openfin8-uk<br/>OBL R/W API (serving - OBARCH-5)"]
+        UK["openfin8-uk<br/>OBL R/W API"]
     end
     subgraph bank["bank8 vertical (first customer)"]
         LEDGER["Bank8:Ledger"]
@@ -59,7 +59,7 @@ wire - lives in `openfin8-core`, shared byte-for-byte. Each adapter
 contributes its [`Profile`](openfin8-core/src/profile.rs) (service
 type, scope vocabulary, schema, env prefix, standard version), its
 registration data, and its published-spec policy. The US and Canadian
-adapters are the same code with different data; the UK adapter (OBARCH-5)
+adapters are the same code with different data; the UK adapter
 adds the OBL wire family over the same kernel.
 
 **The two-ledger model** carries over unchanged from the original
@@ -74,12 +74,12 @@ institution's instance serves whichever role its environment plays.
 | `openfin8-core` | - | - | kernel library (tagged `openfin8-v*`) |
 | `openfin8:ca` | Canada | FDX v6.x (consumer-driven banking) | serving |
 | `openfin8:us` | United States | FDX v6.x | serving |
-| `openfin8:uk` | United Kingdom | OBL Read/Write API v3.1.x | serving (OBARCH-5): the intent consent model, FAPI/JWS, the envelope codec, aisp/pisp/cbpii, events |
+| `openfin8:uk` | United Kingdom | OBL Read/Write API v3.1.x | serving: the intent consent model, FAPI/JWS, the envelope codec, aisp/pisp/cbpii, events |
 | `openfin8:br` | Brazil | Open Finance Brasil | designed (BR profile on the kernel) |
-| `openfin8:eu` | European Union | Berlin Group openFinance | serving (OBARCH-7): the consent + authorisation model, the SCA ceremonies, eIDAS, PIS/baskets, AIS/PIIS, events |
+| `openfin8:eu` | European Union | Berlin Group openFinance | serving: the consent + authorisation model, the SCA ceremonies, eIDAS, PIS/baskets, AIS/PIIS, events |
 | `openfin8:au` | Australia | CDR | designed |
 
-## Specification licensing (the OBARCH-2 policy)
+## Specification licensing
 
 The FDX API specification (US/Canada) is licensed under the FDX API
 License Agreement and distributed exclusively by FDX - **never
