@@ -15,7 +15,7 @@
 SHELL := /bin/bash
 CARGO ?= cargo
 
-# Build identity stamps (BUILDID-1, sentin8-build-info README §3): the
+# Build identity stamps (sentin8-build-info README §3): the
 # stamps ride the SAME shell line as the cargo command — make runs each
 # recipe line in its own shell, so a standalone `export …` line would
 # evaporate before cargo starts. The hash resolves via PLAIN `git
