@@ -25,6 +25,9 @@ CARGO ?= cargo
 # `cd openfin8-$$s` has already happened when the prefix expands.
 stamp_env = SENTIN8_BUILD_PROFILE=$(if $(RELEASE),release,debug) SENTIN8_GIT_SHA=$$(git rev-parse --short HEAD 2>/dev/null)
 
+# Build/test/clean sweep every child INCLUDING the designed-only
+# skeletons (br/au are buildable stubs). START and the captain catalog
+# are the SERVING set only — see the enroll and fleet-run blocks below.
 SERVICES := ca us uk br eu au
 
 .PHONY: help build build-core build-services clean test status enroll start
@@ -75,7 +78,13 @@ status: ## Per-repo HEADs
 # repos (each ships a service-registration.json) plus the Flutter app
 # (openfin8-eopenca, vertical: bank8 — its fragment lists it under
 # "apps"); the openfin8-core KERNEL is NOT enrolled — the registry needs
-# no entry for a library crate (services link it by git tag).
+# no entry for a library crate (services link it by git tag). br/au are
+# DESIGNED-ONLY (no data plane yet): their fragments declare
+# `services: []` (the bank8-app convention) so enroll seeds no captain
+# catalog entry — a stub cannot serve, and a cataloged stub
+# crash-loops (shell::serve panics without state). When a unit reaches
+# serving status, its fragment gains a real services[] entry and
+# catalog.json gains the matching row (ca/us/uk/eu are the template).
 enroll: ## Enroll every openfin8 repo (composable registration, RS §6)
 	@export SENTIN8_CAPTAIN_BINARY_PREFIX="$(PREFIX)"; \
 	cd ../sentin8/sentin8-cli && $(call stamp_env,sentin8-cli) $(CARGO) run --bin sentin8-cli -- vertical enroll \
@@ -98,8 +107,10 @@ GROUP_SCOPE := $(PLATFORM_BASE),$(SERVICE_TYPES)
 
 # The SERVING set rides the boot pin; the designed-only skeletons (br/au)
 # stay OUT of the RUNNING fleet — their shells carry no data plane yet
-# (shell::serve panics before the listener). Build + enroll sweep them;
-# the fleet does not.
+# (shell::serve panics before the listener), their fragments declare
+# services: [] (no captain catalog entry merges), and catalog.json
+# carries only serving rows — an unscoped boot cannot spawn them either.
+# Build + test still sweep them; the fleet does not.
 FLEET_TYPES := openfin8:ca,openfin8:us,openfin8:uk,openfin8:eu
 FLEET_SCOPE := $(PLATFORM_BASE),$(FLEET_TYPES)
 
