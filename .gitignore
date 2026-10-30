@@ -5,3 +5,6 @@
 
 # Local environment (never commit secrets/DSNs)
 /.env
+
+# Local org-repo clone (never commit)
+/.github/
